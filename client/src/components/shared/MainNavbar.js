@@ -1,5 +1,6 @@
 import { AuthConsumer } from "../../providers/AuthProvider";
 import { Link } from 'react-router-dom';
+// import MainNavbar from 'react-bootstrap';
 
 const MainNavbar = ({user, handleLogout }) => {
   
@@ -18,7 +19,7 @@ const MainNavbar = ({user, handleLogout }) => {
       return (
         <>
           <Link to='/login'>
-            <li>
+            <li style={{color:'red'}}>
               Login
             </li>
           </Link>
