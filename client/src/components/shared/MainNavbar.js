@@ -12,6 +12,11 @@ const MainNavbar = ({user, handleLogout }) => {
           <li onClick={ () => handleLogout() }>
             Logout
           </li>
+          <Link to='/toxics'>
+            <li>
+              Toxic
+            </li>
+          </Link>
         </>
       )
     } else {
