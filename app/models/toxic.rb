@@ -1,5 +1,5 @@
 class Toxic < ApplicationRecord
-  belongs_to :User
+  belongs_to :user
 
-  validates :title, :body, :image, presence: true
+  # validates :deletes_in, :location, presence: true
 end

@@ -7,14 +7,20 @@ import Register from './components/auth/Register';
 import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import FetchUser from './components/auth/FetchUser';
+import Toxics from './components/toxics/Toxics'
+// import ToxicForm from './components/toxics/ToxicForm'
+
 const App = () => (
   <>
     <MainNavbar />
     <FetchUser>
       <>
         <Routes>
-          <Route path="/" element={<ProtectedRoute />} />
+          <Route path="/" element={<ProtectedRoute />} >
           <Route path="/" element={<Home />} />
+          <Route path='/toxics' element={ <Toxics /> } />
+          {/* <Route path='/toxics/:toxicId/edit' element={ <ToxicForm /> } /> */}
+          </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/*" element={<NoMatch />} />
