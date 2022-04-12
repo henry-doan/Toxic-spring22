@@ -17,6 +17,26 @@ const Register = ({ handleRegister }) => {
     <>
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
+      <label>Name</label>
+        <input
+          type="name"
+          required
+          autoFocus
+          name='name'
+          value={user.name}
+          placeholder='Name'
+          onChange={(e) => setUser({ ...user, name: e.target.value })}
+        />
+        <label>Profile Name</label>
+        <input
+          type="profile_name"
+          required
+          autoFocus
+          name='profile_name'
+          value={user.profile_name}
+          placeholder='Profile Name'
+          onChange={(e) => setUser({ ...user, profile_name: e.target.value })}
+        />
         <label>Email</label>
         <input
           type="email"
