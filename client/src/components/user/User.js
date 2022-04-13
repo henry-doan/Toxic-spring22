@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import ProfileList from './ProfileList';
-import ProfileForm from './ProfileForm';
+import UserList from './UserList';
+import UserForm from './UserForm';
 import { Button } from 'react-bootstrap';
 
 
-const Profiles = () => {
+const Users = () => {
 
   const [adding, setAdd] =useState(false)
 
@@ -12,7 +12,7 @@ const Profiles = () => {
     <>
       { adding ? 
         <>
-          <ProfileForm 
+          <UserForm 
             setAdd={setAdd}
           />
           <Button onClick={() => setAdd(false)}>Cancel</Button>
@@ -22,7 +22,7 @@ const Profiles = () => {
       }
 
       <h1>All Users</h1>
-      <ProfileList />
+      <UserList />
     </>
   )
 }
