@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   namespace :api do
     resources :users, except: [:index, :show, :create, :destroy, :update] do
       resources :toxics
+      resources :messages
+      resources :notes
       
       
     end

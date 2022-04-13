@@ -46,3 +46,4 @@ class Api::ToxicsController < ApplicationController
       params.require(:toxic).permit(:deletes_in, :desc, :images, :location)
     end
 end
+

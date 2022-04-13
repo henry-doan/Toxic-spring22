@@ -17,6 +17,16 @@ const MainNavbar = ({user, handleLogout }) => {
               Toxic
             </li>
           </Link>
+          <Link to='/notes'>
+            <li>
+              Note
+            </li>
+          </Link>
+          <Link to='/messages'>
+            <li>
+              Message
+            </li>
+          </Link>
         </>
       )
     } else {

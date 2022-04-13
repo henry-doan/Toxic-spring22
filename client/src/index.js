@@ -6,7 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import AuthProvider from './providers/AuthProvider';
 import { initMiddleware } from 'devise-axios';
-import ToxicProvider from './providers/ToxicProvider'
+import ToxicProvider from './providers/ToxicProvider';
+import NoteProvider from './providers/NoteProvider';
+import MessageProvider from './providers/MessageProvider';
 
 initMiddleware();
 
@@ -15,7 +17,11 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <ToxicProvider>
-          <App />
+          <NoteProvider>
+            <MessageProvider>
+              <App />
+            </MessageProvider>
+          </NoteProvider>
         </ToxicProvider>
       </AuthProvider>
     </BrowserRouter>
