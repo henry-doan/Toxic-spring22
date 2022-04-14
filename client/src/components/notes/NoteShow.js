@@ -7,8 +7,6 @@ const NoteShow = ({ id, title, body, deleteNote }) => {
 
   return (
     <>
-
-      <h1>title</h1>
       { editing ?
           <>
             <NoteForm
@@ -25,7 +23,8 @@ const NoteShow = ({ id, title, body, deleteNote }) => {
           </>
         :
         <>
-          <h3>note</h3>
+          <h2>{title}</h2>
+          <h3>{body}</h3>
           <button
             onClick={() => setEdit(true)}
           >

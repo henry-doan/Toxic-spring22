@@ -21,7 +21,6 @@ const Notes = () => {
         :
     <Button onClick={() => setAdd(true)}>+</Button>
       }
-    <h1>Notes</h1>
     <NoteList/>
   </>
   )

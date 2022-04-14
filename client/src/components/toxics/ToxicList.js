@@ -11,7 +11,6 @@ const ToxicList = ({ toxics, getAllToxics }) => {
 
   return ( 
     <>
-      <h1>My Toxics</h1>
           { toxics.map( t => 
               <ToxicShow
                 key={t.id}

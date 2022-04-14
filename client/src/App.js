@@ -11,6 +11,8 @@ import Toxics from './components/toxics/Toxics'
 import Notes from './components/notes/Notes'
 // import ToxicForm from './components/toxics/ToxicForm'
 import Messages from './components/messages/Messages'
+import Profile from './components/auth/Profile';
+
 const App = () => (
   <>
     <MainNavbar />
@@ -22,6 +24,7 @@ const App = () => (
           <Route path='/toxics' element={ <Toxics /> } />
           <Route path='/notes' element={ <Notes /> } />
           <Route path='/messages' element={ <Messages /> } />
+          <Route path='/profile' element={ <Profile /> } />
           {/* <Route path='/toxics/:toxicId/edit' element={ <ToxicForm /> } /> */}
           </Route>
           <Route path="/login" element={<Login />} />

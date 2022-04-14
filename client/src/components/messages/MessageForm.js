@@ -36,7 +36,7 @@ const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEd
                 value={message.title}
                 onChange={(e) => setMessage({...message, title: e.target.value })}
                 type="text" 
-                placeholder="Subject of message" 
+                placeholder="Subject" 
                 required
               />
             </Form.Group>
@@ -46,7 +46,7 @@ const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEd
                 value={message.body}
                 onChange={(e) => setMessage({...message, body: e.target.value })}
                 type="text" 
-                placeholder="What's Happening?" 
+                placeholder="Start a message" 
                 required
               />
             </Form.Group>

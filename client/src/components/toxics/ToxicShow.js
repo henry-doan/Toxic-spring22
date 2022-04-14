@@ -8,7 +8,7 @@ const ToxicShow = ({ id, desc, deleteToxic }) => {
   return (
     <>
 
-      <h1>title</h1>
+      <h1>Tox!c</h1>
       { editing ?
           <>
             <ToxicForm
@@ -24,7 +24,7 @@ const ToxicShow = ({ id, desc, deleteToxic }) => {
           </>
         :
         <>
-          <h3>toxic</h3>
+          <h3>{desc}</h3>
           <button
             onClick={() => setEdit(true)}
           >

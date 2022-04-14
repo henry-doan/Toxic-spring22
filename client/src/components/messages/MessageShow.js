@@ -8,7 +8,6 @@ const MessageShow = ({ id, title, body, deleteMessage }) => {
   return (
     <>
 
-      <h1>title</h1>
       { editing ?
           <>
             <MessageForm
@@ -25,7 +24,8 @@ const MessageShow = ({ id, title, body, deleteMessage }) => {
           </>
         :
         <>
-          <h3>message</h3>
+          <h2>{title}</h2>
+          <h3>{body}</h3>
           <button
             onClick={() => setEdit(true)}
           >

@@ -21,7 +21,6 @@ const Messages = () => {
         :
     <Button onClick={() => setAdd(true)}>+</Button>
       }
-    <h1>Messages</h1>
     <MessageList/>
   </>
   )

@@ -21,7 +21,6 @@ const Toxics = () => {
         :
     <Button onClick={() => setAdd(true)}>+</Button>
       }
-    <h1>Toxics</h1>
     <ToxicList/>
   </>
   )

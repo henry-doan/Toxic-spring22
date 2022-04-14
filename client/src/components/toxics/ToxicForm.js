@@ -26,7 +26,7 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit}) => {
   }
   return (
     <>
-      <h1>{ id ? 'Update' : 'Create' } Toxic</h1>
+      <h1>{ id ? 'Update' : 'Create' } Tox!c</h1>
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col>
@@ -36,7 +36,7 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit}) => {
                 value={toxic.desc}
                 onChange={(e) => setToxic({...toxic, desc: e.target.value })}
                 type="text" 
-                placeholder="What's Happening?" 
+                placeholder="Let it out bro." 
                 required
               />
             </Form.Group>
