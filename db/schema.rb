@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_14_002848) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_14_190536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_002848) do
   create_table "toxics", force: :cascade do |t|
     t.datetime "deletes_in"
     t.text "desc"
-    t.string "images"
+    t.string "image"
     t.string "location"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { ToxicConsumer } from '../../providers/ToxicProvider';
 import ToxicForm from './ToxicForm'
-const ToxicShow = ({ id, desc, deleteToxic }) => {
+import { Image } from 'react-bootstrap';
+
+const ToxicShow = ({ id, desc, deleteToxic, image}) => {
   const [editing, setEdit] = useState(false)
   // const [show, setShow] = useState(false);
 
+  // const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
   return (
     <>
 
@@ -15,6 +18,7 @@ const ToxicShow = ({ id, desc, deleteToxic }) => {
             desc={desc}
             id={id}
             setEdit={setEdit}
+            
             />
             <button
               onClick={() => setEdit(false)}
@@ -24,6 +28,7 @@ const ToxicShow = ({ id, desc, deleteToxic }) => {
           </>
         :
         <>
+          <Image src={image} width='200px' />
           <h3>{desc}</h3>
           <button
             onClick={() => setEdit(true)}
