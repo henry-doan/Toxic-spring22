@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { MessageConsumer } from '../../providers/MessageProvider';
 import MessageForm from './MessageForm'
-const MessageShow = ({ id, title, body, deleteMessage }) => {
+import { Image } from 'react-bootstrap';
+
+
+const MessageShow = ({ id, title, body, deleteMessage, image }) => {
   const [editing, setEdit] = useState(false)
   // const [show, setShow] = useState(false);
 
@@ -25,6 +28,7 @@ const MessageShow = ({ id, title, body, deleteMessage }) => {
         :
         <>
           <h2>{title}</h2>
+          <Image src={image} width='200px' />
           <h3>{body}</h3>
           <button
             onClick={() => setEdit(true)}

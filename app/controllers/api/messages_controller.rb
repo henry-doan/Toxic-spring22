@@ -11,20 +11,65 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
-    @message = @current_user.messages.new(message_params)
-    if @message.save
-      render json: @message
-    else
-      render json: { errors: @message.errors }, status: :unprocessable_entity
+    @message = @current_user.messages.new(title: params[:title], body: params[:body] )
+
+    file = params[:image]
+
+    if file && file != ''
+      begin
+        ext = File.extname(file.tempfile)
+        cloud_image = Cloudinary::Uploader.upload(
+          file, public_id: file.original_filename, secure: true
+        )
+        @message.image = cloud_image['secure_url']
+        if @message.save 
+          render json: @message
+        else 
+          render json: { errors: @message.errors.full_messages }, status: 422
+        end
+      rescue => e
+        render json: { errors: e }, status: 422
+      end
+    else 
+      if @message.save 
+      
+        render json: @message
+      else 
+        render json: { errors: @message.errors.full_messages }, status: 422
+      end
     end
   end
 
   def update
-    if @message.update(message_params)
-      render json: @message
-    else
-      render json: { errors: @message.errors }, status: :unprocessable_entity
-    end
+    
+    @message.title = params[:title] ? params[:title] : @message.title
+      @message.body = params[:body] ? params[:body] : @message.body
+      @message.location = params[:location] ? params[:location] : @message.location
+  
+      file = params[:file]
+  
+      if file && file != ''
+        begin
+          ext = File.extname(file.tempfile)
+          cloud_image = Cloudinary::Uploader.upload(
+            file, public_id: file.original_filename, secure: true
+          )
+          @message.image = cloud_image['secure_url']
+          if @message.save 
+            render json: @message
+          else 
+            render json: { errors: @message.errors.full_messages }, status: 422
+          end
+        rescue => e
+          render json: { errors: e }, status: 422
+        end
+      else 
+        if @message.save 
+          render json: @message
+        else 
+          render json: { errors: @message.errors.full_messages }, status: 422
+        end
+      end
   end
 
   def destroy

@@ -1,16 +1,44 @@
 import { useState, useEffect} from 'react';
 import { MessageConsumer } from '../../providers/MessageProvider';
 import { Form, Row, Col, Button} from 'react-bootstrap'
-const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEdit}) => {
-  const [message, setMessage] = useState({ title: '', body: '' })
 
+// Import React FilePond
+import { FilePond, File, registerPlugin } from 'react-filepond'
+
+// Import FilePond styles
+import 'filepond/dist/filepond.min.css'
+
+// Import the Image EXIF Orientation and Image Preview plugins
+// Note: These need to be installed separately
+// `npm i filepond-plugin-image-preview filepond-plugin-image-exif-orientation --save`
+import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
+
+// Register the plugins
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
+
+const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEdit, image, location}) => {
+  const [message, setMessage] = useState({ title: '', body: '', image: null, location })
+  const [file,setFile] = useState()
 
   useEffect( () => {
     if (id) {
-      setMessage({ title, body })
+      setMessage({ title, body, image, location })
     }
   }, [])
 
+  const handleFileUpdate = (fileItems) => {
+    if (fileItems.length !== 0) {
+      setFile(fileItems)
+      setMessage({ ...message, image: fileItems[0].file });
+    }
+  }
+
+  const handleFileRemoved = (e, file) => {
+    setFile(null)
+    setMessage({ ...message, image: null });
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -21,7 +49,7 @@ const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEd
       addMessage(message)
       setAdd(false)
     }
-    setMessage({ title: '', body: '' })
+    setMessage({...message, image: null, title: '', body: '' })
 
   }
   return (
@@ -29,6 +57,19 @@ const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEd
       <h1>{ id ? 'Update' : 'Create' } Message</h1>
       <Form onSubmit={handleSubmit}>
         <Row>
+        <Col md="4">
+        <FilePond 
+            files={file}
+            onupdatefiles={handleFileUpdate}
+            onremovefile={handleFileRemoved}
+            allowMultiple={false}
+            name='image'
+            labelIdle='Drag and Drop your files or <span className="filePond--label-action">
+              Browse
+              </span>  
+            '
+        />
+        </Col>
           <Col>
             <Form.Group className="mb-3">
               <Form.Control 
