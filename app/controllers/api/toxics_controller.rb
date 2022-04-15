@@ -14,8 +14,8 @@ class Api::ToxicsController < ApplicationController
     @toxic = @current_user.toxics.new(desc: params[:desc])
 
     file = params[:image]
- 
-      if file && file != ''
+   
+      if file && file != '' && file != 'null' 
         begin
           ext = File.extname(file.tempfile)
           cloud_image = Cloudinary::Uploader.upload(
@@ -47,9 +47,8 @@ class Api::ToxicsController < ApplicationController
       @toxic.desc = params[:desc] ? params[:desc] : @toxic.desc
       @toxic.location = params[:location] ? params[:location] : @toxic.location
   
-      file = params[:file]
-  
-      if file && file != ''
+      file = params[:image]
+      if file && file != '' && file != 'undefined'
         begin
           ext = File.extname(file.tempfile)
           cloud_image = Cloudinary::Uploader.upload(

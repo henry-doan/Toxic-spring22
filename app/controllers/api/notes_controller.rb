@@ -16,7 +16,7 @@ class Api::NotesController < ApplicationController
 
     file = params[:image]
 
-    if file && file != ''
+    if file && file != '' && file != 'null'
       begin
         ext = File.extname(file.tempfile)
         cloud_image = Cloudinary::Uploader.upload(
@@ -47,9 +47,9 @@ class Api::NotesController < ApplicationController
     @note.body = params[:body] ? params[:body] : @note.body
     
 
-    file = params[:file]
+    file = params[:image]
 
-    if file && file != ''
+    if file && file != '' && file != 'undefined'
       begin
         ext = File.extname(file.tempfile)
         cloud_image = Cloudinary::Uploader.upload(
