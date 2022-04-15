@@ -10,31 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_12_025025) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_14_190536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "messages", force: :cascade do |t|
     t.string "title"
-    t.text "body"
+    t.string "body"
     t.string "image"
     t.string "location"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "notes", force: :cascade do |t|
     t.string "title"
-    t.text "body"
+    t.string "body"
     t.string "image"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "toxics", force: :cascade do |t|
     t.datetime "deletes_in"
     t.text "desc"
-    t.string "images"
+    t.string "image"
     t.string "location"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -71,11 +75,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_025025) do
     t.integer "following"
     t.integer "visitors"
     t.string "location"
+    t.string "fname"
+    t.string "lname"
+    t.integer "age"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "messages", "users"
+  add_foreign_key "notes", "users"
   add_foreign_key "toxics", "users"
 end

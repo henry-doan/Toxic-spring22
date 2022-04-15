@@ -2,12 +2,14 @@
 
 one:
   title: MyString
-  body: MyText
+  body: MyString
   image: MyString
   location: MyString
+  user: one
 
 two:
   title: MyString
-  body: MyText
+  body: MyString
   image: MyString
   location: MyString
+  user: two

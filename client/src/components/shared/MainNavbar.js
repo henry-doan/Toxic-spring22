@@ -12,9 +12,25 @@ const MainNavbar = ({user, handleLogout }) => {
           <li onClick={ () => handleLogout() }>
             Logout
           </li>
+          <Link to='/profile'>
+            <li>
+              Profile
+              {/* <img src={user.image} /> */}
+            </li>
+          </Link>
           <Link to='/toxics'>
             <li>
-              Toxic
+              Tox!c
+            </li>
+          </Link>
+          <Link to='/notes'>
+            <li>
+              Note
+            </li>
+          </Link>
+          <Link to='/messages'>
+            <li>
+              Message
             </li>
           </Link>
         </>

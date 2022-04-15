@@ -1,5 +1,3 @@
 class Note < ApplicationRecord
-  belongs_to :User
-
-  validates :title, :body, :image, presence: true
+  belongs_to :user
 end

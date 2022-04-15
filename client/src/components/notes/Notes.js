@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import ToxicForm from './ToxicForm';
-import ToxicList from './ToxicList'
+import NoteForm from './NoteForm';
+import NoteList from './NoteList'
 import { Button } from 'react-bootstrap';
-import { ToxicConsumer } from '../../providers/ToxicProvider';
+import { NoteConsumer } from '../../providers/NoteProvider';
 
-const Toxics = () => {
+const Notes = () => {
   const [adding, setAdd] = useState([])
   
 
@@ -13,7 +13,7 @@ const Toxics = () => {
   {
     adding ?
     <>
-    <ToxicForm 
+    <NoteForm 
     setAdd={setAdd}
     />
     <Button variant="warning" onClick={() => setAdd(false)}>Cancel</Button>
@@ -21,15 +21,15 @@ const Toxics = () => {
         :
     <Button onClick={() => setAdd(true)}>+</Button>
       }
-    <ToxicList/>
+    <NoteList/>
   </>
   )
 }
 
-const ConnectedToxics = (props) => (
-  <ToxicConsumer>
-    { value => <Toxics {...value} {...props} />}
-  </ToxicConsumer>
+const ConnectedNotes = (props) => (
+  <NoteConsumer>
+    { value => <Notes {...value} {...props} />}
+  </NoteConsumer>
 )
 
-export default ConnectedToxics;
+export default ConnectedNotes;
