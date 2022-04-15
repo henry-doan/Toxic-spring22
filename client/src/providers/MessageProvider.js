@@ -19,15 +19,23 @@ const MessageProvider = ({ children, user }) => {
   }
 
 
-  const addMessage = (message) => {
-    axios.post(`/api/users/${user.id}/messages`, { message })
+  const addMessage = (newMessage) => {
+    let message = new FormData()
+    message.append('image', newMessage.image)
+    message.append('title', newMessage.title)
+    message.append('body', newMessage.body)
+    axios.post(`/api/users/${user.id}/messages`,  message )
       .then( res => 
         setMessages([...messages, res.data]))
       .catch( err => console.log(err))
   }
 
   const updateMessage = (id, message) => {
-    axios.put(`/api/users/${user.id}/messages/${id}`, { message } )
+    let data = new FormData()
+    data.append('file', message.image)
+    data.append('title', message.title)
+    data.append('body', message.body)
+    axios.put(`/api/users/${user.id}/messages/${id}`, data  )
       .then( res => {
         const newUpdatedMessages = messages.map( m => {
           if (m.id === id) {
