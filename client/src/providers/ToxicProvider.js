@@ -25,19 +25,19 @@ const ToxicProvider = ({ children, user }) => {
     // data.append('deletes_in', toxic.deletes_in)
     toxic.append('desc', newToxic.desc)
     // data.append('location', toxic.location)
-    axios.post(`/api/users/${user.id}/toxics`,  toxic )
+    axios.post(`/api/users/${user.id}/toxics`, toxic )
       .then( res => 
         setToxics([...toxics, res.data]))
       .catch( err => console.log(err))
   }
 
-  const updateToxic = (id, toxic) => {
-    let data = new FormData()
-    data.append('file', toxic.image)
+  const updateToxic = (id, newToxic) => {
+    let toxic = new FormData()
+    toxic.append('image', newToxic.image)
     // data.append('deletes_in', toxic.deletes_in)
-    data.append('desc', toxic.desc)
+    toxic.append('desc', newToxic.desc)
     // data.append('location', toxic.location)
-    axios.put(`/api/users/${user.id}/toxics/${id}`,  data )
+    axios.put(`/api/users/${user.id}/toxics/${id}`, toxic )
       .then( res => {
         const newUpdatedToxics = toxics.map( t => {
           if (t.id === id) {

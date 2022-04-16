@@ -15,7 +15,7 @@ class Api::MessagesController < ApplicationController
 
     file = params[:image]
 
-    if file && file != ''
+    if file && file != '' && file != 'null'
       begin
         ext = File.extname(file.tempfile)
         cloud_image = Cloudinary::Uploader.upload(
@@ -41,14 +41,14 @@ class Api::MessagesController < ApplicationController
   end
 
   def update
-    
+
     @message.title = params[:title] ? params[:title] : @message.title
       @message.body = params[:body] ? params[:body] : @message.body
       @message.location = params[:location] ? params[:location] : @message.location
   
-      file = params[:file]
+      file = params[:image]
   
-      if file && file != ''
+      if file && file != '' && file != 'undefined'
         begin
           ext = File.extname(file.tempfile)
           cloud_image = Cloudinary::Uploader.upload(

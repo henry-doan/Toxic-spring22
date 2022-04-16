@@ -30,12 +30,12 @@ const NoteProvider = ({ children, user }) => {
       .catch( err => console.log(err))
   }
 
-  const updateNote = (id, note) => {
-    let data = new FormData()
-    data.append('file', note.image)
-    data.append('title', note.title)
-    data.append('body', note.body)
-    axios.put(`/api/users/${user.id}/notes/${id}`,  data  )
+  const updateNote = (id, newNote) => {
+    let note = new FormData()
+    note.append('image', newNote.image)
+    note.append('title', newNote.title)
+    note.append('body', newNote.body)
+    axios.put(`/api/users/${user.id}/notes/${id}`,  note  )
       .then( res => {
         const newUpdatedNotes = notes.map( n => {
           if (n.id === id) {
