@@ -8,7 +8,7 @@ class Api::UsersController < ApplicationController
   
       file = params[:file]
   
-      if file && file != ''
+      if file && file != '' && file != 'null'
         begin
           ext = File.extname(file.tempfile)
           cloud_image = Cloudinary::Uploader.upload(

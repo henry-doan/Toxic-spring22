@@ -24,6 +24,7 @@ const MessageProvider = ({ children, user }) => {
     message.append('image', newMessage.image)
     message.append('title', newMessage.title)
     message.append('body', newMessage.body)
+    message.append('location', newMessage.location)
     axios.post(`/api/users/${user.id}/messages`,  message )
       .then( res => 
         setMessages([...messages, res.data]))
@@ -35,6 +36,7 @@ const MessageProvider = ({ children, user }) => {
     message.append('image', newMessage.image)
     message.append('title', newMessage.title)
     message.append('body', newMessage.body)
+    message.append('location', newMessage.location)
     axios.put(`/api/users/${user.id}/messages/${id}`, message  )
       .then( res => {
         const newUpdatedMessages = messages.map( m => {

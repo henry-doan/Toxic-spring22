@@ -1,8 +1,7 @@
 import ToxicShow from './ToxicShow';
 import { ToxicConsumer } from '../../providers/ToxicProvider';
 import { useEffect } from 'react';
-
-const ToxicList = ({ toxics, getAllToxics }) => {
+const ToxicList = ({ toxics, getAllToxics}) => {
   
   useEffect( () => {
     getAllToxics()
@@ -12,9 +11,10 @@ const ToxicList = ({ toxics, getAllToxics }) => {
   return ( 
     <>
           { toxics.map( t => 
+              
               <ToxicShow
-                key={t.id}
-                {...t}
+              key={t.id}
+              {...t}
               />  
           )}
     </>

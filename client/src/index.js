@@ -9,6 +9,7 @@ import { initMiddleware } from 'devise-axios';
 import ToxicProvider from './providers/ToxicProvider';
 import NoteProvider from './providers/NoteProvider';
 import MessageProvider from './providers/MessageProvider';
+import 'moment-timezone'
 
 initMiddleware();
 

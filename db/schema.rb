@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_14_190536) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_19_032710) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,13 +36,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_190536) do
   end
 
   create_table "toxics", force: :cascade do |t|
-    t.datetime "deletes_in"
     t.text "desc"
     t.string "image"
     t.string "location"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "deletes_in"
     t.index ["user_id"], name: "index_toxics_on_user_id"
   end
 

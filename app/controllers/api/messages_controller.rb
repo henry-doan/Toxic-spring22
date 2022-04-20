@@ -11,7 +11,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
-    @message = @current_user.messages.new(title: params[:title], body: params[:body] )
+    @message = @current_user.messages.new(title: params[:title], body: params[:body], location: params[:location] )
 
     file = params[:image]
 
