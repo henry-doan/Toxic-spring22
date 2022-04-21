@@ -1,5 +1,14 @@
 class Api::UsersController < ApplicationController
-    def update
+  before_action :set_user
+  
+  def show
+    toxic = @current_user.toxics
+    message = @current_user.messages
+    note = @current_user.notes
+    render json: {toxic: toxic, message: message, note: note}
+  end
+  
+  def update
       user = User.find(params[:id])
       user.fname = params[:fname] ? params[:fname] : user.fname
       user.lname = params[:lname] ? params[:lname] : user.lname
@@ -33,4 +42,10 @@ class Api::UsersController < ApplicationController
       
     end
 
+
+    private
+
+    def set_user
+      @current_user = User.find(params[:user_id])
+    end
 end
