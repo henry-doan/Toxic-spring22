@@ -13,6 +13,7 @@ import 'filepond/dist/filepond.min.css'
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
+import axios from 'axios';
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
@@ -23,11 +24,21 @@ const Profile = ({ user, updateUser }) => {
   const [editing, setEditing] = useState(false)
   const [formVals, setFormValue] = useState({ fname: '', lname: '', age: 0, email: '', image: null })
   const [file, setFile] = useState()
+  const [data, setData] = useState([])
+
 
   useEffect( () => {
-    const { fname, lname, email, age, image } = user
+    const { fname, lname, email, age, image, id } = user
     setFormValue({ fname, lname, email, age, image })
   }, [])
+
+  const getAllUserItems = () => {
+    axios.get(`/api/users/${user.id}`)
+    .then( res => setData( () => {
+      const profileData = []
+      res.data.toxic.map( )
+    } ))
+  }
 
   const handleFileUpdate = (fileItems) => {
     if (fileItems.length !== 0) {
@@ -125,6 +136,7 @@ const Profile = ({ user, updateUser }) => {
     </Form>
   )
 
+  
   return (
     <Container>
       <h1>Profile</h1>
