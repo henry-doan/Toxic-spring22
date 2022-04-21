@@ -1,5 +1,10 @@
 import { AuthConsumer } from "../../providers/AuthProvider";
 import { Link } from 'react-router-dom';
+import { Button, Image} from 'react-bootstrap';
+import Logo from '../../images/Logo.png';
+import tCom from '../../images/tCom.png';
+import tNot from '../../images/tNot.png';
+  // import { Form } from "react-bootstrap";
 // import MainNavbar from 'react-bootstrap';
 
 const MainNavbar = ({user, handleLogout }) => {
@@ -9,36 +14,41 @@ const MainNavbar = ({user, handleLogout }) => {
     if (user) {
       return (
         <>
-          <li onClick={ () => handleLogout() }>
-            Logout
-          </li>
-          <Link to='/profile'>
+          {/* <Link to='/profile'>
             <li>
-              Profile
-              {/* <img src={user.image} /> */}
+            Profile
+            <img src={user.image} />
             </li>
-          </Link>
+          </Link> */}
+          <Button>
           <Link to='/toxics'>
-            <li>
-              Tox!c
-            </li>
+            <Image src={Logo} width="144px" height="128px"/>
           </Link>
+          </Button>
+          <Button>
           <Link to='/notes'>
-            <li>
-              Note
-            </li>
+           <Image src={tNot}/>
           </Link>
+          </Button>
+          <Button>
           <Link to='/messages'>
-            <li>
-              Message
-            </li>
+          <Image src={tCom} width="144px" height="128px"/>
           </Link>
+          </Button>
+            <li onClick={ () => handleLogout() }>
+              Logout
+            </li>
         </>
       )
     } else {
       // links to show up when Not logged in
       return (
         <>
+          <Link to='/home'>
+            <li>
+              Home Landing
+            </li>
+          </Link>
           <Link to='/login'>
             <li style={{color:'red'}}>
               Login
@@ -58,14 +68,10 @@ const MainNavbar = ({user, handleLogout }) => {
   return (
     <>
       <nav>
-        <ul>
-          <Link to='/'>
-            <li>
-              Home
-            </li>
-          </Link>
+        
+          
             { rightNavItems() }
-        </ul>
+        
       </nav>
     </>
   )

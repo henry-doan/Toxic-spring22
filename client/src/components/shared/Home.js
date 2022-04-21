@@ -1,8 +1,10 @@
+
 import { Link } from 'react-router-dom';
 
 const Home = () => (
   <>
   <h3>Devise Auth App</h3>
+           
   <Link to='/register'>
       <button>
         Sign Up

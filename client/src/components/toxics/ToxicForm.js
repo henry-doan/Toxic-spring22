@@ -19,14 +19,18 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 
 const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, location, deletes_in}) => {
-  const [toxic, setToxic] = useState({ desc: '', image: null, location: '', deletes_in: ''  })
+  const [toxic, setToxic] = useState({ desc: '', image: null, location: '', deletes_in: 1  })
   const [file, setFile] = useState()
-
+  
   useEffect( () => {
     if (id) {
       setToxic({ desc, location, deletes_in, image })
     }
   }, [])
+
+  // useEffect( () => {
+  //   if ()
+  // })
 
   const handleFileUpdate = (fileItems) => {
     if (fileItems.length !== 0) {
@@ -50,7 +54,7 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
       addToxic(toxic)
       setAdd(false)
     }
-    setToxic({ ...toxic, image: null })
+    setToxic({ ...toxic, image: null, desc: '', deletes_in: 1, location: '' })
 
   }
   
@@ -84,16 +88,28 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
               />
             </Form.Group>
           </Col>
-          {/* <Col>
+          <Col>
             <Form.Group className="mb-3">
               <Form.Control 
-                name='images'
-                value={toxic.images}
-                onChange={(e) => setToxic({...toxic, images: e.target.value })}
-                type="text"  
+                name='deletes_in'
+                value={toxic.deletes_in}
+                onChange={(e) => setToxic({...toxic, deletes_in: e.target.value })}
+                type="number"
+                required 
               />
             </Form.Group>
-          </Col> */}
+          </Col>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Control 
+                name='location'
+                value={toxic.location}
+                onChange={(e) => setToxic({...toxic, location: e.target.value })}
+                type="text" 
+                placeholder="Location" 
+              />
+            </Form.Group>
+          </Col>
         </Row>
         <Button variant="primary" type="submit">
           Submit

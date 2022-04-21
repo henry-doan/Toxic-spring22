@@ -69,8 +69,6 @@ const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEd
               </span>  
             '
         />
-        </Col>
-          <Col>
             <Form.Group className="mb-3">
               <Form.Control 
                 name='title'
@@ -91,6 +89,18 @@ const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEd
                 required
               />
             </Form.Group>
+            <Col>
+            <Form.Group className="mb-3">
+              <Form.Control 
+                name='location'
+                value={message.location}
+                onChange={(e) => setMessage({...message, location: e.target.value })}
+                type="text" 
+                placeholder="Location" 
+                required
+              />
+            </Form.Group>
+          </Col>
           </Col>
         </Row>
         <Button variant="primary" type="submit">

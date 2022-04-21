@@ -10,6 +10,8 @@ export const ToxicConsumer = ToxicContext.Consumer;
 const ToxicProvider = ({ children, user }) => {
   const [toxics, setToxics] = useState([])
 
+  
+
   const navigate = useNavigate();
 
   const getAllToxics = () => {
@@ -22,9 +24,9 @@ const ToxicProvider = ({ children, user }) => {
   const addToxic = (newToxic) => {
     let toxic = new FormData()
     toxic.append('image', newToxic.image)
-    // data.append('deletes_in', toxic.deletes_in)
+    toxic.append('deletes_in', newToxic.deletes_in)
     toxic.append('desc', newToxic.desc)
-    // data.append('location', toxic.location)
+    toxic.append('location', newToxic.location)
     axios.post(`/api/users/${user.id}/toxics`, toxic )
       .then( res => 
         setToxics([...toxics, res.data]))
@@ -34,9 +36,9 @@ const ToxicProvider = ({ children, user }) => {
   const updateToxic = (id, newToxic) => {
     let toxic = new FormData()
     toxic.append('image', newToxic.image)
-    // data.append('deletes_in', toxic.deletes_in)
+    toxic.append('deletes_in', newToxic.deletes_in)
     toxic.append('desc', newToxic.desc)
-    // data.append('location', toxic.location)
+    toxic.append('location', newToxic.location)
     axios.put(`/api/users/${user.id}/toxics/${id}`, toxic )
       .then( res => {
         const newUpdatedToxics = toxics.map( t => {

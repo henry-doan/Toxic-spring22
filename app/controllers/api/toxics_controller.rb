@@ -11,7 +11,7 @@ class Api::ToxicsController < ApplicationController
   end
 
   def create
-    @toxic = @current_user.toxics.new(desc: params[:desc])
+    @toxic = @current_user.toxics.new(desc: params[:desc], deletes_in: params[:deletes_in], location: params[:location])
 
     file = params[:image]
    
@@ -46,7 +46,8 @@ class Api::ToxicsController < ApplicationController
     @toxic.deletes_in = params[:deletes_in] ? params[:deletes_in] : @toxic.deletes_in
       @toxic.desc = params[:desc] ? params[:desc] : @toxic.desc
       @toxic.location = params[:location] ? params[:location] : @toxic.location
-  
+ 
+
       file = params[:image]
       if file && file != '' && file != 'undefined'
         begin
