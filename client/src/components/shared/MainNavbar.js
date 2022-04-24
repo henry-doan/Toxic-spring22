@@ -14,12 +14,12 @@ const MainNavbar = ({user, handleLogout }) => {
     if (user) {
       return (
         <>
-          {/* <Link to='/profile'>
+          <Link to='/profile'>
             <li>
             Profile
-            <img src={user.image} />
+            {/* <img src={user.image} /> */}
             </li>
-          </Link> */}
+          </Link>
           <Button>
           <Link to='/toxics'>
             <Image src={Logo} width="144px" height="128px"/>

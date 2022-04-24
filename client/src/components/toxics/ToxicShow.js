@@ -3,7 +3,7 @@ import { ToxicConsumer } from '../../providers/ToxicProvider';
 import ToxicForm from './ToxicForm';
 import { Image } from 'react-bootstrap';
 import Moment from 'react-moment';
-import moment from 'moment'
+import moment from 'moment';
 
 
 
@@ -22,8 +22,6 @@ const ToxicShow = ({ id, desc, deleteToxic, image, deletes_in, created_at, locat
   
   return (
     <>
-
-      <h1>Tox!c</h1>
       { editing ?
           <>
             <ToxicForm
