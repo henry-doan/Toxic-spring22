@@ -30,7 +30,7 @@ const NoteShow = ({ id, title, body, deleteNote, image, created_at}) => {
         : */}
         <>
         <SideContainer>
-          <Image src={defaultImage}/>
+          <Image src={defaultImage} width='100px' />
           <h5>
             Time posted: &nbsp; 
           <Moment format="LTS" >

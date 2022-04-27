@@ -57,7 +57,7 @@ const NoteForm = ({ addNote, setAdd, id, title, body, updateNote, setEdit, image
     <>
       <MainContainer>
         <SideContainer>
-            <Image src={defaultImage} />
+            <Image src={defaultImage} width='100px' />
           {/* <h1>{ id ? 'Update' : 'Create' } Note</h1> */}
           <Form onSubmit={handleSubmit}>
             <Row>

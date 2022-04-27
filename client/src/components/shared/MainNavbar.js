@@ -1,9 +1,9 @@
 import { AuthConsumer } from "../../providers/AuthProvider";
 import { Link } from 'react-router-dom';
-import { Button, Image, Nav, Navbar, Container} from 'react-bootstrap';
-import Logo from '../../images/Logo.png';
-import tCom from '../../images/tCom.png';
-import tNot from '../../images/tNot.png';
+import { Button, Image,Row, Col, Container} from 'react-bootstrap';
+import Logo from '../../images/Logo.svg';
+import tCom from '../../images/tCom.svg';
+import tNot from '../../images/tNot.svg';
 import { MainBtn } from "../styles/shared";
 
   // import { Form } from "react-bootstrap";
@@ -16,62 +16,51 @@ const MainNavbar = ({user, handleLogout }) => {
     if (user) {
       return (
         <>
-           {/* <Link to='/profile'>
+         
+       
+
+        <Container>
+   <Row>
+    <Col>
+    <Button>
+        <Link to='/toxics'>
+          <Image src={Logo} width="144px" height="128px"/>
+        </Link>
+        </Button>
+           <Link to='/profile'>
             <li>
-            Profile */}
+            Profile
              {/* <img src={user.image} />  */}
-             {/* </li>
+             </li>
           </Link>
-          <Button>
-          <Link to='/toxics'>
-            <Image src={Logo} width="144px" height="128px"/>
-          </Link>
-          </Button>
-
-          <Button>
-          <Link to='/notes'>
-           <Image src={tNot}/>
-          </Link>
-          </Button>
-
+            <li onClick={ () => handleLogout() }>
+              Logout
+            </li> 
+    </Col>
+    <Col>
           <Button>
           <Link to='/messages'>
           <Image src={tCom} width="144px" height="128px"/>
           </Link>
-          // </Button> */}
-          {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Container>
-          <Navbar.Brand href="/toxics">Toxic</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-            </Nav>
-            <Nav>
-              <Nav.Link href="/notes">Notes</Nav.Link>
-              <Nav.Link href="/messages">Messages</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-          </Container>
-        </Navbar>
-            <li onClick={ () => handleLogout() }>
-              Logout
-            </li>  */}
-            <Navbar style={{height:'3rem'}} collapseOnSelect expand="sm" bg="dark" variant="dark" >
-  <Container >
-  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-  <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="me-auto" >
-    </Nav>
-    <Nav >
-      <Nav.Link style={{color:'orange', fontSize:'12px'}} href="/toxics"> Toxic</Nav.Link>
-      <Nav.Link  style={{color:'orange',fontSize:'12px'}}href="/notes">Notes</Nav.Link>
-      <Nav.Link  style={{color:'orange',fontSize:'12px'}}href="/messages">Messages</Nav.Link>
-      <Nav.Link  style={{color:'orange',fontSize:'12px'}}href="/profile">My Profile</Nav.Link>
-      <MainBtn onClick={ () => handleLogout() } style={{color:'orange',fontSize:'12px'}}href="/login">Logout </MainBtn>
-    </Nav>
-  </Navbar.Collapse>
-  </Container>
-</Navbar>
+         </Button> 
+              
+    </Col>
+    <Col>
+          <Button>
+          <Link to='/notes'>
+          <Image src={tNot} width="144px" height="128px"/>
+          </Link>
+          </Button>
+        
+    </Col>
+  </Row>
+</Container>
+  
+          
+        
+     
+     
+        
         </>
       )
     } else {

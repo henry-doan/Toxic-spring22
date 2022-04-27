@@ -78,8 +78,6 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
               </span>  
             '
         />
-        </Col>
-          <Col>
             <Form.Group className="mb-3">
               <Form.Control 
                 name='desc'
@@ -90,8 +88,6 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
                 required
               />
             </Form.Group>
-          </Col>
-          <Col>
             <Form.Group className="mb-3">
               <Form.Control 
                 name='deletes_in'
@@ -101,8 +97,6 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
                 required 
               />
             </Form.Group>
-          </Col>
-          <Col>
             <Form.Group className="mb-3">
               <Form.Control 
                 name='location'
