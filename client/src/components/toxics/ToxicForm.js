@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react';
 import { ToxicConsumer } from '../../providers/ToxicProvider';
 import { Form, Row, Col, Button} from 'react-bootstrap'
 
+
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond'
 
@@ -57,12 +58,14 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
     setToxic({ ...toxic, image: null, desc: '', deletes_in: 1, location: '' })
 
   }
+ 
   
   return (
     <>
+    
       <h1>{ id ? 'Update' : 'Create' } Tox!c</h1>
-      <Form onSubmit={handleSubmit}>
-        <Row>
+      <Form onSubmit={handleSubmit} >
+        <Row >
         <Col md="4">
         <FilePond 
             files={file}

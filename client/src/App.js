@@ -12,6 +12,7 @@ import Notes from './components/notes/Notes'
 // import ToxicForm from './components/toxics/ToxicForm'
 import Messages from './components/messages/Messages'
 import Profile from './components/auth/Profile';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => (
   <>
