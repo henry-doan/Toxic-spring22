@@ -1,6 +1,6 @@
 const Footer = () => (
   <>
-    <p>&#169; {(new Date().getFullYear())} Policy / Terms</p>
+    <p style={{textAlign: 'center'}}>&#169; {(new Date().getFullYear())} Policy / Terms</p>
   </>
 )
 

@@ -11,7 +11,6 @@ const NoteList = ({ notes, getAllNotes }) => {
 
   return ( 
     <>
-      <h1>My Notes</h1>
           { notes.map( n => 
               <NoteShow
                 key={n.id}

@@ -9,20 +9,14 @@ const Notes = () => {
   
 
   return(
-  <>
-  {
-    adding ?
+  <div style={{flexDirection:"column"}}>
     <>
     <NoteForm 
     setAdd={setAdd}
     />
-    <Button variant="warning" onClick={() => setAdd(false)}>Cancel</Button>
     </>
-        :
-    <Button onClick={() => setAdd(true)}>+</Button>
-      }
     <NoteList/>
-  </>
+  </div>
   )
 }
 

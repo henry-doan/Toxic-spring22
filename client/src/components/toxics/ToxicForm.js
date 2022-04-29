@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react';
 import { ToxicConsumer } from '../../providers/ToxicProvider';
 import { Form, Row, Col, Button} from 'react-bootstrap'
 
+
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond'
 
@@ -14,6 +15,7 @@ import 'filepond/dist/filepond.min.css'
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
+import { MainContainer, SideContainerToxic } from '../styles/shared';
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
@@ -57,13 +59,14 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
     setToxic({ ...toxic, image: null, desc: '', deletes_in: 1, location: '' })
 
   }
+ 
   
   return (
-    <>
-      <h1>{ id ? 'Update' : 'Create' } Tox!c</h1>
-      <Form onSubmit={handleSubmit}>
-        <Row>
-        <Col md="4">
+    <div>
+        <SideContainerToxic>
+      <Form onSubmit={handleSubmit} >
+        <Row >
+        <Col >
         <FilePond 
             files={file}
             onupdatefiles={handleFileUpdate}
@@ -75,8 +78,6 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
               </span>  
             '
         />
-        </Col>
-          <Col>
             <Form.Group className="mb-3">
               <Form.Control 
                 name='desc'
@@ -87,8 +88,6 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
                 required
               />
             </Form.Group>
-          </Col>
-          <Col>
             <Form.Group className="mb-3">
               <Form.Control 
                 name='deletes_in'
@@ -98,8 +97,6 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
                 required 
               />
             </Form.Group>
-          </Col>
-          <Col>
             <Form.Group className="mb-3">
               <Form.Control 
                 name='location'
@@ -115,7 +112,8 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
           Submit
         </Button>
       </Form>
-    </>
+      </SideContainerToxic>
+    </div>
   )
 }
 const ConnectedToxicForm = (props) => (

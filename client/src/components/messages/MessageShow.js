@@ -3,15 +3,14 @@ import { MessageConsumer } from '../../providers/MessageProvider';
 import MessageForm from './MessageForm'
 import { Image } from 'react-bootstrap';
 import Moment from 'react-moment';
-
+import { MainContainer, SideContainerMessage } from '../styles/shared';
 const MessageShow = ({ id, title, body, deleteMessage, image, location, created_at}) => {
   const [editing, setEdit] = useState(false)
   // const [show, setShow] = useState(false);
 
   return (
     <>
-
-      { editing ?
+      {/* { editing ?
           <>
             <MessageForm
             title={title}
@@ -26,30 +25,33 @@ const MessageShow = ({ id, title, body, deleteMessage, image, location, created_
               Cancel
             </button>
           </>
-        :
+        : */}
         <>
+        <SideContainerMessage>
           <h5>
             Time posted: &nbsp; 
           <Moment format="LTS" >
             {created_at}
           </Moment>
           </h5>
-          <h2>{title}</h2>
+          {/* <h2>{title}</h2> */}
           <Image src={image} width='200px' />
           <h3>{body}</h3>
           <h5>{location}</h5>
-          <button
+          {/* <button
             onClick={() => setEdit(true)}
           >
             Edit
-          </button>
+          </button> */}
           <button
             onClick={() => deleteMessage(id)}
           >
             Delete
           </button>
+         </SideContainerMessage>
         </>
-      }
+
+      {/* } */}
     </>
   )
 }

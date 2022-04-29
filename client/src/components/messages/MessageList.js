@@ -11,7 +11,6 @@ const MessageList = ({ messages, getAllMessages }) => {
 
   return ( 
     <>
-      <h1>My Messages</h1>
           { messages.map( m => 
               <MessageShow
                 key={m.id}

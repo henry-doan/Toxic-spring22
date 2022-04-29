@@ -10,8 +10,7 @@ const ToxicList = ({ toxics, getAllToxics}) => {
 
   return ( 
     <>
-          { toxics.map( t => 
-              
+          { toxics.map( t =>       
               <ToxicShow
               key={t.id}
               {...t}

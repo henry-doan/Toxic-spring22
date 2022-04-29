@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react';
 import { MessageConsumer } from '../../providers/MessageProvider';
 import { Form, Row, Col, Button} from 'react-bootstrap'
-
+import { SideContainerMessage } from '../styles/shared';
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond'
 
@@ -54,10 +54,11 @@ const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEd
   }
   return (
     <>
-      <h1>{ id ? 'Update' : 'Create' } Message</h1>
+        <SideContainerMessage>
+      {/* <h1>{ id ? 'Update' : 'Create' } Message</h1> */}
       <Form onSubmit={handleSubmit}>
         <Row>
-        <Col md="4">
+        <Col>
         <FilePond 
             files={file}
             onupdatefiles={handleFileUpdate}
@@ -107,6 +108,7 @@ const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEd
           Submit
         </Button>
       </Form>
+      </SideContainerMessage>
     </>
   )
 }

@@ -14,7 +14,10 @@ import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orien
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
 import axios from 'axios';
-
+import moment from 'moment';
+import ToxicShow from './../toxics/ToxicShow'
+import MessageShow from './../messages/MessageShow'
+import NoteShow from './../notes/NoteShow'
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 
@@ -28,15 +31,33 @@ const Profile = ({ user, updateUser }) => {
 
 
   useEffect( () => {
-    const { fname, lname, email, age, image, id } = user
+    const { fname, lname, email, age, image } = user
     setFormValue({ fname, lname, email, age, image })
+    getAllUserItems()
   }, [])
 
   const getAllUserItems = () => {
     axios.get(`/api/users/${user.id}`)
     .then( res => setData( () => {
       const profileData = []
-      res.data.toxic.map( )
+      console.log(res.data);
+      res.data.toxic.map((toxic) => {
+        toxic.type = 'toxic'
+        profileData.push(toxic) 
+      })
+      res.data.message.map((message) => {
+        message.type = 'message'
+        profileData.push(message)
+      })
+      res.data.note.map((note) => {
+        note.type = 'note'
+        profileData.push(note)
+      })
+    
+      profileData.sort((b, a) => {
+        return moment(a.created_at) - moment(b.created_at)
+      })
+      return profileData
     } ))
   }
 
@@ -148,6 +169,28 @@ const Profile = ({ user, updateUser }) => {
           </Button>
         </Col>
       </Row>
+      {/* {JSON.stringify(data)} */}
+      { data.map( d => {
+        if (d.type === 'toxic'){
+         return <ToxicShow
+          key={d.id}
+          {...d}
+          />
+        }
+        if (d.type === 'message'){
+          return <MessageShow
+           key={d.id}
+           {...d}
+           />
+         }
+         if (d.type === 'note'){
+          return <NoteShow
+           key={d.id}
+           {...d}
+           />
+         }
+      })}
+      
     </Container>
   )
 }

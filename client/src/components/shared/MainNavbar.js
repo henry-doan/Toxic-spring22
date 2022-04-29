@@ -1,11 +1,12 @@
 import { AuthConsumer } from "../../providers/AuthProvider";
 import { Link } from 'react-router-dom';
-import { Button, Image} from 'react-bootstrap';
-import Logo from '../../images/Logo.png';
+import { Button, Image,Row, Col, Container} from 'react-bootstrap';
 import tCom from '../../images/tCom.png';
-import tNot from '../../images/tNot.png';
-  // import { Form } from "react-bootstrap";
-// import MainNavbar from 'react-bootstrap';
+import tNot from '../../images/tNot.svg';
+import { RightNav1, RightNav2, NavImage } from "../styles/shared";
+
+
+  
 
 const MainNavbar = ({user, handleLogout }) => {
   
@@ -14,30 +15,23 @@ const MainNavbar = ({user, handleLogout }) => {
     if (user) {
       return (
         <>
-          {/* <Link to='/profile'>
-            <li>
-            Profile
-            <img src={user.image} />
-            </li>
-          </Link> */}
-          <Button>
-          <Link to='/toxics'>
-            <Image src={Logo} width="144px" height="128px"/>
-          </Link>
-          </Button>
-          <Button>
-          <Link to='/notes'>
-           <Image src={tNot}/>
-          </Link>
-          </Button>
-          <Button>
-          <Link to='/messages'>
-          <Image src={tCom} width="144px" height="128px"/>
-          </Link>
-          </Button>
-            <li onClick={ () => handleLogout() }>
-              Logout
-            </li>
+        <Container >
+          <nav>
+                  <RightNav1>
+                  <Link to='/notes'>
+                    <NavImage src={tNot}/>
+                  </Link>
+                  </RightNav1>
+               
+                    <RightNav2>
+                  <Link to='/messages'>
+                    <NavImage src={tCom} />
+                  </Link>
+                  </RightNav2>    
+          </nav>
+        
+</Container>
+        
         </>
       )
     } else {
@@ -67,12 +61,12 @@ const MainNavbar = ({user, handleLogout }) => {
   // links that show up regardless of login or out
   return (
     <>
-      <nav>
+      
         
           
             { rightNavItems() }
         
-      </nav>
+      
     </>
   )
 }
