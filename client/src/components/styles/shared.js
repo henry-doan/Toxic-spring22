@@ -1,6 +1,9 @@
 import { Container, Image} from 'react-bootstrap';
 import styled from 'styled-components';
+import { Button } from 'react-bootstrap';
+// export const MainNavbar = styled.h1`
 
+<<<<<<< HEAD
 export const MainNavbar = styled.h1`
 
 `
@@ -89,3 +92,21 @@ box-sizing: border-box;
 //  export const NavBar = styled(Container)`
  
 //  `
+=======
+export const MainBtn = styled(Button)`
+  background: orange;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: "cursive", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  width: 80px;
+  height:30px;
+  margin-top: 2px;
+  &:hover {
+    color: black;
+    background-color: orange
+  }
+ `
+>>>>>>> 88aa9a0 (log in)
