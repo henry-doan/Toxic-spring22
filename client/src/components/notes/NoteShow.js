@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { NoteConsumer } from '../../providers/NoteProvider';
 import NoteForm from './NoteForm'
-import { Image, Card } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import Moment from 'react-moment';
-import { MainContainer, SideContainer } from '../styles/shared';
+import { MainContainer, SideContainerNote } from '../styles/shared';
 
 const NoteShow = ({ id, title, body, deleteNote, image, created_at}) => {
   const [editing, setEdit] = useState(false)
@@ -11,8 +11,7 @@ const NoteShow = ({ id, title, body, deleteNote, image, created_at}) => {
 
   const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
   return (
-    < >
-    <MainContainer>
+    <>
       {/* { editing ?
           <>
             <NoteForm
@@ -29,7 +28,7 @@ const NoteShow = ({ id, title, body, deleteNote, image, created_at}) => {
           </>
         : */}
         <>
-        <SideContainer>
+        <SideContainerNote>
           <Image src={defaultImage} width='100px' />
           <h5>
             Time posted: &nbsp; 
@@ -50,9 +49,8 @@ const NoteShow = ({ id, title, body, deleteNote, image, created_at}) => {
             >
             Delete
           </button>
-            </SideContainer>
+            </SideContainerNote>
         </>
-      </MainContainer>
       {/* } */}
     </>
   )

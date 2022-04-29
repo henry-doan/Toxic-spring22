@@ -9,20 +9,14 @@ const Messages = () => {
   
 
   return(
-  <>
-  {
-    adding ?
+  <div style={{flexDirection:"column"}}>
     <>
     <MessageForm 
     setAdd={setAdd}
     />
-    <Button variant="warning" onClick={() => setAdd(false)}>Cancel</Button>
     </>
-        :
-    <Button onClick={() => setAdd(true)}>+</Button>
-      }
     <MessageList/>
-  </>
+  </div>
   )
 }
 

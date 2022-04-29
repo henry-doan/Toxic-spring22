@@ -15,6 +15,7 @@ import 'filepond/dist/filepond.min.css'
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
+import { MainContainer, SideContainerToxic } from '../styles/shared';
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
@@ -61,12 +62,11 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
  
   
   return (
-    <>
-    
-      <h1>{ id ? 'Update' : 'Create' } Tox!c</h1>
+    <div>
+        <SideContainerToxic>
       <Form onSubmit={handleSubmit} >
         <Row >
-        <Col md="4">
+        <Col >
         <FilePond 
             files={file}
             onupdatefiles={handleFileUpdate}
@@ -112,7 +112,8 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
           Submit
         </Button>
       </Form>
-    </>
+      </SideContainerToxic>
+    </div>
   )
 }
 const ConnectedToxicForm = (props) => (

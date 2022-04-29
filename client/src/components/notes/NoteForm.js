@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react';
 import { NoteConsumer } from '../../providers/NoteProvider';
 import { Form, Row, Col, Button, Image} from 'react-bootstrap'
-import {MainContainer, SideContainer} from '../styles/shared';
+import {MainContainer, SideContainerNote} from '../styles/shared';
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond'
 
@@ -55,8 +55,7 @@ const NoteForm = ({ addNote, setAdd, id, title, body, updateNote, setEdit, image
   }
   return (
     <>
-      <MainContainer>
-        <SideContainer>
+        <SideContainerNote>
             <Image src={defaultImage} width='100px' />
           {/* <h1>{ id ? 'Update' : 'Create' } Note</h1> */}
           <Form onSubmit={handleSubmit}>
@@ -100,8 +99,7 @@ const NoteForm = ({ addNote, setAdd, id, title, body, updateNote, setEdit, image
               Submit
             </Button>
           </Form> 
-      </SideContainer>
-      </MainContainer>
+      </SideContainerNote>
     </>
   )
 }

@@ -9,15 +9,14 @@ const Notes = () => {
   
 
   return(
-  <>
-  
+  <div style={{flexDirection:"column"}}>
     <>
     <NoteForm 
     setAdd={setAdd}
     />
     </>
     <NoteList/>
-  </>
+  </div>
   )
 }
 

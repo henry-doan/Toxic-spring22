@@ -4,6 +4,7 @@ import ToxicForm from './ToxicForm';
 import { Image, Container, Row, Col } from 'react-bootstrap';
 import Moment from 'react-moment';
 import moment from 'moment';
+import { MainContainer,SideContainerToxic } from '../styles/shared';
 
 
 
@@ -22,8 +23,8 @@ const ToxicShow = ({ id, desc, deleteToxic, image, deletes_in, created_at, locat
   
   return (
     <>
-        
-      { editing ?
+       
+      {/* { editing ?
 
               <>
               <div>
@@ -43,34 +44,33 @@ const ToxicShow = ({ id, desc, deleteToxic, image, deletes_in, created_at, locat
               </>
 
    
-        :
+        : */}
         <>
-        
-     
+        <SideContainerToxic>
+              <Image src={image} width='200px' />
               <h5>
                 Time posted: &nbsp; 
               <Moment format="LTS" >
                 {created_at}
               </Moment>
               </h5>
-              <Image src={image} width='200px' />
             <h3>{desc}</h3>
             <h4>{location}</h4>
-              <button
+              {/* <button
                 onClick={() => setEdit(true)}
               >
                 Edit
-              </button>
+              </button> */}
               <button
                 onClick={() => deleteToxic(id)}
               >
                 Delete
               </button>
  
-       
+          </SideContainerToxic>
         </>
-      }
-     
+      
+      {/* } */}
     </>
   )
 }

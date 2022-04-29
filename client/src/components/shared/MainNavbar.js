@@ -1,13 +1,12 @@
 import { AuthConsumer } from "../../providers/AuthProvider";
 import { Link } from 'react-router-dom';
 import { Button, Image,Row, Col, Container} from 'react-bootstrap';
-import Logo from '../../images/Logo.svg';
-import tCom from '../../images/tCom.svg';
+import tCom from '../../images/tCom.png';
 import tNot from '../../images/tNot.svg';
-import { MainBtn } from "../styles/shared";
+import { RightNav1, RightNav2, NavImage } from "../styles/shared";
 
-  // import { Form } from "react-bootstrap";
-// import MainNavbar from 'react-bootstrap';
+
+  
 
 const MainNavbar = ({user, handleLogout }) => {
   
@@ -16,50 +15,22 @@ const MainNavbar = ({user, handleLogout }) => {
     if (user) {
       return (
         <>
-         
-       
-
-        <Container>
-   <Row>
-    <Col>
-    <Button>
-        <Link to='/toxics'>
-          <Image src={Logo} width="144px" height="128px"/>
-        </Link>
-        </Button>
-           <Link to='/profile'>
-            <li>
-            Profile
-             {/* <img src={user.image} />  */}
-             </li>
-          </Link>
-            <li onClick={ () => handleLogout() }>
-              Logout
-            </li> 
-    </Col>
-    <Col>
-          <Button>
-          <Link to='/messages'>
-          <Image src={tCom} width="144px" height="128px"/>
-          </Link>
-         </Button> 
-              
-    </Col>
-    <Col>
-          <Button>
-          <Link to='/notes'>
-          <Image src={tNot} width="144px" height="128px"/>
-          </Link>
-          </Button>
+        <Container >
+          <nav>
+                  <RightNav1>
+                  <Link to='/notes'>
+                    <NavImage src={tNot}/>
+                  </Link>
+                  </RightNav1>
+               
+                    <RightNav2>
+                  <Link to='/messages'>
+                    <NavImage src={tCom} />
+                  </Link>
+                  </RightNav2>    
+          </nav>
         
-    </Col>
-  </Row>
 </Container>
-  
-          
-        
-     
-     
         
         </>
       )
@@ -90,12 +61,12 @@ const MainNavbar = ({user, handleLogout }) => {
   // links that show up regardless of login or out
   return (
     <>
-      <nav>
+      
         
           
             { rightNavItems() }
         
-      </nav>
+      
     </>
   )
 }
