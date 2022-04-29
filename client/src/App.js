@@ -13,8 +13,12 @@ import Notes from './components/notes/Notes'
 import Messages from './components/messages/Messages'
 import Profile from './components/auth/Profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
+<<<<<<< HEAD
 import LNavbar from './components/shared/LeftNavbar'
 import Teams from './components/teams/Team';
+=======
+// import LandingPageImage from './Components/LandingPageImage';
+>>>>>>> 88aa9a0 (log in)
 
 const App = () => (
   <>

@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.Screen {
+  background-image: url("https://images.unsplash.com/photo-1536514498073-50e69d39c6cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80");
+ }
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
