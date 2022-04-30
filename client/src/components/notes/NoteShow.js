@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { NoteConsumer } from '../../providers/NoteProvider';
 import NoteForm from './NoteForm'
-import { Image } from 'react-bootstrap';
+import { Image, Button} from 'react-bootstrap';
 import Moment from 'react-moment';
-import { MainContainer, SideContainerNote } from '../styles/shared';
+import { SideContainerNote, UploadImage } from '../styles/shared';
 
 const NoteShow = ({ id, title, body, deleteNote, image, created_at}) => {
   const [editing, setEdit] = useState(false)
@@ -29,26 +29,28 @@ const NoteShow = ({ id, title, body, deleteNote, image, created_at}) => {
         : */}
         <>
         <SideContainerNote>
-          <Image src={defaultImage} width='100px' />
-          <h5>
+          <Image src={defaultImage} width='85px' style={{float: 'left'}}  />
+          <h5>Name</h5>
+          <h6>
             Time posted: &nbsp; 
           <Moment format="LTS" >
             {created_at}
           </Moment>
-          </h5>
+          </h6>
           {/* <h2>{title}</h2> */}
-          <Image src={image} width='200px' /> 
-          <h3>{body}</h3>
+          <UploadImage src={image}/> 
+          <h3 style={{textAlign: 'center'}}>{body}</h3>
           {/* <button
             onClick={() => setEdit(true)}
             >
             Edit
           </button> */}
-          <button
+          <Button
+          style={{float: 'right'}}
             onClick={() => deleteNote(id)}
             >
             Delete
-          </button>
+          </Button>
             </SideContainerNote>
         </>
       {/* } */}

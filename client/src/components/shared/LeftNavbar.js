@@ -25,22 +25,22 @@ const LNavbar = ({user, handleLogout }) => {
                   <br/>
                   <br/>
 
-                  <Link to='/toxics'>
-                  <h1>Home</h1>
+                  <Link to='/toxics' style={{textDecoration: 'none'}}>
+                  <h1 style={{color: 'white'}}>Home</h1>
                   </Link>
                   <br/>
                   <br/>
-                  <Link to='/profile'>
-                  <h1>Profile</h1>
+                  <Link to='/profile' style={{textDecoration: 'none'}}>
+                  <h1 style={{color: 'white'}}>Profile</h1>
                   </Link>
                   <br/>
                   <br/>
-                  <Link to='/teams'>
-                  <h1>Team</h1>
+                  <Link to='/teams' style={{textDecoration: 'none'}}>
+                  <h1 style={{color: 'white'}}>Team</h1>
                   </Link>
                   <br/>
                   <br/>
-                  <h1 onClick={ () => handleLogout() }>
+                  <h1 style={{color: 'white'}} onClick={ () => handleLogout() }>
                     Logout
                   </h1>
                   <br/>

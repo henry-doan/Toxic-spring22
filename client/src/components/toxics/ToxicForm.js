@@ -1,6 +1,6 @@
 import { useState, useEffect} from 'react';
 import { ToxicConsumer } from '../../providers/ToxicProvider';
-import { Form, Row, Col, Button} from 'react-bootstrap'
+import { Form, Row, Col, Button, Image} from 'react-bootstrap'
 
 
 // Import React FilePond
@@ -15,7 +15,7 @@ import 'filepond/dist/filepond.min.css'
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
-import { MainContainer, SideContainerToxic } from '../styles/shared';
+import { SubButton, SideContainerToxic2 } from '../styles/shared';
 
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
@@ -23,7 +23,7 @@ registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, location, deletes_in}) => {
   const [toxic, setToxic] = useState({ desc: '', image: null, location: '', deletes_in: 1  })
   const [file, setFile] = useState()
-  
+  const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
   useEffect( () => {
     if (id) {
       setToxic({ desc, location, deletes_in, image })
@@ -63,11 +63,43 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
   
   return (
     <div>
-        <SideContainerToxic>
+        <SideContainerToxic2>
       <Form onSubmit={handleSubmit} >
+      <Image src={defaultImage} width='85px' style={{float: 'left'}} />
         <Row >
         <Col >
-        <FilePond 
+            <Form.Group className="mb-3">
+              <Form.Control 
+              style={{backgroundColor: 'rgba(108, 145, 194, 0.3)',border: 'none'}}
+                name='desc'
+                value={toxic.desc}
+                onChange={(e) => setToxic({...toxic, desc: e.target.value })}
+                type="text" 
+                placeholder="What do you want to say?" 
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Control 
+              style={{backgroundColor: 'rgba(108, 145, 194, 0.3)', border: 'none', color: 'white'}}
+                name='deletes_in'
+                value={toxic.deletes_in}
+                onChange={(e) => setToxic({...toxic, deletes_in: e.target.value })}
+                type="number"
+                required 
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Control 
+              style={{backgroundColor: 'rgba(108, 145, 194, 0.3)', border: 'none'}}
+                name='location'
+                value={toxic.location}
+                onChange={(e) => setToxic({...toxic, location: e.target.value })}
+                type="text" 
+                placeholder="Where are you posting from?" 
+              />
+            </Form.Group>
+            <FilePond 
             files={file}
             onupdatefiles={handleFileUpdate}
             onremovefile={handleFileRemoved}
@@ -78,41 +110,13 @@ const ToxicForm = ({ addToxic, setAdd, id, desc, updateToxic, setEdit, image, lo
               </span>  
             '
         />
-            <Form.Group className="mb-3">
-              <Form.Control 
-                name='desc'
-                value={toxic.desc}
-                onChange={(e) => setToxic({...toxic, desc: e.target.value })}
-                type="text" 
-                placeholder="Let it out bro." 
-                required
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Control 
-                name='deletes_in'
-                value={toxic.deletes_in}
-                onChange={(e) => setToxic({...toxic, deletes_in: e.target.value })}
-                type="number"
-                required 
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Control 
-                name='location'
-                value={toxic.location}
-                onChange={(e) => setToxic({...toxic, location: e.target.value })}
-                type="text" 
-                placeholder="Location" 
-              />
-            </Form.Group>
           </Col>
         </Row>
-        <Button variant="primary" type="submit">
+        <SubButton variant="primary" type="submit">
           Submit
-        </Button>
+        </SubButton>
       </Form>
-      </SideContainerToxic>
+      </SideContainerToxic2>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { AuthConsumer } from "../../providers/AuthProvider";
 import { Link } from 'react-router-dom';
 import { Button, Image,Row, Col, Container} from 'react-bootstrap';
-import tCom from '../../images/tCom.png';
+import tCom from '../../images/tCom.svg';
 import tNot from '../../images/tNot.svg';
 import { RightNav1, RightNav2, NavImage } from "../styles/shared";
 
@@ -16,6 +16,7 @@ const MainNavbar = ({user, handleLogout }) => {
       return (
         <>
         <Container >
+          
           <nav>
                   <RightNav1>
                   <Link to='/notes'>
@@ -25,7 +26,7 @@ const MainNavbar = ({user, handleLogout }) => {
                
                     <RightNav2>
                   <Link to='/messages'>
-                    <NavImage src={tCom} />
+                    <NavImage src={tCom}/>
                   </Link>
                   </RightNav2>    
           </nav>
