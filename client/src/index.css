@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.filepond--root .filepond--drop-label {
+  font-size: 5px;
+}
+
+.filepond--wrapper {
+ min-width: 50px;
+ float: left;
+}
+.filepond--root .filepond--credits[style] {
+  font-size: 0px;
+}
