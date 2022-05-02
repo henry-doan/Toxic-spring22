@@ -227,7 +227,7 @@ const Register = ({ handleRegister }) => {
   </MainBtn>
 </Form>
 </RegisterForm>
-<Image width="600px"src={Logo} style={{float: 'right'}}/>
+<Image width="600px"src={Logo} style={{float: 'right', marginRight: '65px'}}/>
     </>
   )
 }
