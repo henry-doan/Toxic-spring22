@@ -4,7 +4,7 @@ import ToxicForm from './ToxicForm';
 import { Image, Button } from 'react-bootstrap';
 import Moment from 'react-moment';
 import moment from 'moment';
-import { UploadImage,SideContainerToxic } from '../styles/shared';
+import { UploadImage,SideContainerToxic, RightNav1, MainContainer, SubButton } from '../styles/shared';
 
 
 
@@ -46,6 +46,7 @@ const ToxicShow = ({ id, desc, deleteToxic, image, deletes_in, created_at, locat
    
         : */}
         <>
+        <MainContainer>
         <SideContainerToxic>
           <Image src={defaultImage} width='85px' style={{float: 'left'}}  />
               <h5>Name</h5>
@@ -57,20 +58,20 @@ const ToxicShow = ({ id, desc, deleteToxic, image, deletes_in, created_at, locat
               </h6>
               <UploadImage src={image}/> 
             <h3 style={{textAlign: 'center'}}>{desc}</h3>
-            <h4>{location}</h4>
+            <h6>Location: {location}</h6>
               {/* <button
                 onClick={() => setEdit(true)}
               >
                 Edit
               </button> */}
-              <Button
-              style={{float: 'right'}}
+              <SubButton
                 onClick={() => deleteToxic(id)}
               >
                 Delete
-              </Button>
+              </SubButton>
  
           </SideContainerToxic>
+          </MainContainer>
         </>
       
       {/* } */}

@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { AuthConsumer } from "../../providers/AuthProvider";
-import { Container, Form, Button } from 'react-bootstrap';
-import { MainBtn, H1 } from '../styles/shared';
+import { Form , Image} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import {MainBtn, LoginForm} from '../styles/shared'
+import Logo from '../../images/Logo.svg';
 const Login = ({ handleLogin }) => {
   const [user, setUser] = useState({ email: '', password: '' })
   const handleSubmit = (e) => {
@@ -10,8 +12,8 @@ const Login = ({ handleLogin }) => {
   }
   return (
     <>
-     {/* <Container>
-      <h1 style={{textAlign:'center'}}>Login</h1>
+      
+      {/* <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>Email</label>
         <input
@@ -32,13 +34,14 @@ const Login = ({ handleLogin }) => {
           type='password'
           onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
-        <button type='submit'>Get Started</button>
-      </form>
-    </Container> */}
-     <div class="d-flex flex-row-reverse">
-     <Form onSubmit={handleSubmit} class="p-2" style={{marginRight:'60px', marginTop:'100px'}}>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
+        <button type='submit'>Submit</button>
+      </form> */}
+      <LoginForm >
+        <h1 style={{fontSize: '26px', textAlign: 'center', color: 'black'}}>Join Tox!c Today</h1>
+        <p style={{fontSize: '16px', textAlign: 'center', color: 'black'}}>Join TOX!C and start feeling better today</p>
+     <Form onSubmit={handleSubmit} >
+  <Form.Group className="sm" controlId="formBasicEmail">
+    <Form.Label style={{color:'white'}}>Email address</Form.Label>
     <Form.Control
           type="email"
           autoFocus
@@ -49,7 +52,7 @@ const Login = ({ handleLogin }) => {
           onChange={(e) => setUser({ ...user, email: e.target.value })} />
   </Form.Group>
   <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
+    <Form.Label style={{color:'white'}}>Password</Form.Label>
     <Form.Control required
           name='password'
           value={user.password}
@@ -58,10 +61,16 @@ const Login = ({ handleLogin }) => {
           onChange={(e) => setUser({ ...user, password: e.target.value })} />
   </Form.Group>
   <MainBtn  type="submit">
-    Submit
+    Login
+  </MainBtn>
+  <MainBtn>
+  <Link to='/register' style={{textDecoration: 'none', color: 'white'}}>
+    Register
+  </Link>
   </MainBtn>
 </Form>
-</div>
+</LoginForm>
+<Image width="600px"src={Logo} style={{float: 'right'}}/>
     </>
   )
 }

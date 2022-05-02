@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react';
 import { MessageConsumer } from '../../providers/MessageProvider';
 import { Form, Row, Col, Button, Image} from 'react-bootstrap'
-import { SideContainerMessage2 } from '../styles/shared';
+import { SideContainerMessage2, SubButton } from '../styles/shared';
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond'
 
@@ -106,9 +106,9 @@ const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEd
         />
           </Col>
         </Row>
-        <Button variant="primary" type="submit" style={{float: 'right'}}>
+        <SubButton variant="primary" type="submit" >
           Submit
-        </Button>
+        </SubButton>
       </Form>
       </SideContainerMessage2>
     </>

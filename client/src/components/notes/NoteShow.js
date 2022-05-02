@@ -3,7 +3,7 @@ import { NoteConsumer } from '../../providers/NoteProvider';
 import NoteForm from './NoteForm'
 import { Image, Button} from 'react-bootstrap';
 import Moment from 'react-moment';
-import { SideContainerNote, UploadImage } from '../styles/shared';
+import { MainContainer, SideContainerNote, UploadImage , SubButton} from '../styles/shared';
 
 const NoteShow = ({ id, title, body, deleteNote, image, created_at}) => {
   const [editing, setEdit] = useState(false)
@@ -27,7 +27,7 @@ const NoteShow = ({ id, title, body, deleteNote, image, created_at}) => {
             </button>
           </>
         : */}
-        <>
+        <MainContainer>
         <SideContainerNote>
           <Image src={defaultImage} width='85px' style={{float: 'left'}}  />
           <h5>Name</h5>
@@ -40,20 +40,21 @@ const NoteShow = ({ id, title, body, deleteNote, image, created_at}) => {
           {/* <h2>{title}</h2> */}
           <UploadImage src={image}/> 
           <h3 style={{textAlign: 'center'}}>{body}</h3>
+          <br/>
+          <br/>
           {/* <button
             onClick={() => setEdit(true)}
             >
             Edit
           </button> */}
-          <Button
-          style={{float: 'right'}}
+          <SubButton
+         
             onClick={() => deleteNote(id)}
             >
             Delete
-          </Button>
+          </SubButton>
             </SideContainerNote>
-        </>
-      {/* } */}
+        </MainContainer>
     </>
   )
 }

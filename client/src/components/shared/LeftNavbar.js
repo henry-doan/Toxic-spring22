@@ -1,6 +1,6 @@
 import { AuthConsumer } from "../../providers/AuthProvider";
 import { Link } from 'react-router-dom';
-import { Button, Image,Row, Col, Container} from 'react-bootstrap';
+import { Nav,Navbar, Container} from 'react-bootstrap';
 import Logo from '../../images/Logo.svg';
 import { LeftNav, NavImage } from "../styles/shared";
 
@@ -57,7 +57,7 @@ const LNavbar = ({user, handleLogout }) => {
       // links to show up when Not logged in
       return (
         <>
-          <Link to='/home'>
+          {/* <Link to='/home'>
             <li>
               Home Landing
             </li>
@@ -71,7 +71,17 @@ const LNavbar = ({user, handleLogout }) => {
             <li>
               Register
             </li>
-          </Link>
+          </Link> */}
+          {/* <Navbar style={{height:'40px', backgroundColor:'black', marginLeft: '10px', marginTop: '10px'}} collapseOnSelect expand="sm" >
+  <Container >
+  <Navbar.Brand style={{color:'orange',fontSize:'12px'}}>Logo Here</Navbar.Brand>
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse style={{color: 'red'}} id="responsive-navbar-nav">
+    <Nav className="me-auto">
+    </Nav>
+  </Navbar.Collapse>
+  </Container>
+</Navbar> */}
         </>
       )
     }
