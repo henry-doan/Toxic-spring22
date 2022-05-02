@@ -1,6 +1,6 @@
 import { AuthConsumer } from "../../providers/AuthProvider";
 import { Link } from 'react-router-dom';
-import { Button, Image,Row, Col, Container} from 'react-bootstrap';
+import { Navbar,Nav, Container} from 'react-bootstrap';
 import tCom from '../../images/tCom.svg';
 import tNot from '../../images/tNot.svg';
 import { RightNav1, RightNav2, NavImage } from "../styles/shared";
@@ -39,7 +39,7 @@ const MainNavbar = ({user, handleLogout }) => {
       // links to show up when Not logged in
       return (
         <>
-          <Link to='/home'>
+          {/* <Link to='/home'>
             <li>
               Home Landing
             </li>
@@ -53,7 +53,20 @@ const MainNavbar = ({user, handleLogout }) => {
             <li>
               Register
             </li>
-          </Link>
+          </Link> */}
+          {/* <Navbar style={{height:'40px', backgroundColor:'black',marginRight: '10px', marginTop: '10px'}} collapseOnSelect expand="sm" >
+  <Container >
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    <Nav className="me-auto">
+    </Nav>
+    <Nav>
+      <Nav.Link style={{color:'orange', fontSize:'12px'}} href="/login"> LOGIN</Nav.Link>
+      <Nav.Link  style={{color:'orange',fontSize:'12px'}}href="/register">SIGN UP</Nav.Link>
+    </Nav>
+  </Navbar.Collapse>
+  </Container>
+</Navbar> */}
         </>
       )
     }

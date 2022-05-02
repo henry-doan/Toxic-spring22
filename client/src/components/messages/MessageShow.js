@@ -3,7 +3,7 @@ import { MessageConsumer } from '../../providers/MessageProvider';
 import MessageForm from './MessageForm'
 import { Image, Button } from 'react-bootstrap';
 import Moment from 'react-moment';
-import { UploadImage, SideContainerMessage } from '../styles/shared';
+import { UploadImage, SideContainerMessage, MainContainer, SubButton} from '../styles/shared';
 const MessageShow = ({ id, title, body, deleteMessage, image, location, created_at}) => {
   const [editing, setEdit] = useState(false)
   // const [show, setShow] = useState(false);
@@ -26,7 +26,7 @@ const MessageShow = ({ id, title, body, deleteMessage, image, location, created_
             </button>
           </>
         : */}
-        <>
+        <MainContainer>
         <SideContainerMessage>
         <Image src={defaultImage} width='85px' style={{float: 'left'}}  />
         <h5>Name</h5>
@@ -38,21 +38,21 @@ const MessageShow = ({ id, title, body, deleteMessage, image, location, created_
           </h6>
           {/* <h2>{title}</h2> */}
           <UploadImage src={image} />
-          <h5 style={{textAlign: 'center'}}>{body}</h5>
-          <h5>Posted from: {location}</h5>
+          <h3 style={{textAlign: 'center'}}>{body}</h3>
+          <h5>Location: {location}</h5>
           {/* <button
             onClick={() => setEdit(true)}
           >
             Edit
           </button> */}
-          <Button
-          style={{float: 'right'}}
+          <SubButton
+          
             onClick={() => deleteMessage(id)}
           >
             Delete
-          </Button>
+          </SubButton>
          </SideContainerMessage>
-        </>
+        </MainContainer>
 
       {/* } */}
     </>
