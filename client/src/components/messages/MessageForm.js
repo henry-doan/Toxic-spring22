@@ -1,6 +1,6 @@
 import { useState, useEffect} from 'react';
 import { MessageConsumer } from '../../providers/MessageProvider';
-import { Form, Row, Col, Button, Image} from 'react-bootstrap'
+import { Form, Row, Col, Button, Image, FormLabel} from 'react-bootstrap'
 import { SideContainerMessage2, SubButton } from '../styles/shared';
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond'

@@ -19,7 +19,7 @@ export const SideContainerToxic = styled(Container) `
 color: white;
 padding-top: 10px;
 min-width: 46vw;
-min-height: 341px; 
+min-height: 35vh; 
 background: rgba(108, 145, 194, 0.3);
 border: 1px solid #EA2B1F;
 border-radius: 10px;
@@ -48,7 +48,7 @@ export const SideContainerNote = styled(Container) `
 padding-top: 10px;
 color: white;
 min-width: 40vw;
-min-height: 341px; 
+min-height: 35vh; 
 border: 1px solid #FFFFFF;
 background: rgba(255, 255, 255, 0.2);
 border-radius: 10px;
@@ -68,7 +68,7 @@ export const SideContainerMessage = styled(Container) `
 padding-top: 10px;
 color: white;
 min-width: 40vw;
-min-height: 341px; 
+min-height: 35vh; 
 border: 1px solid #FFFFFF;
 background: rgba(254, 179, 0, 0.2);
 border-radius: 10px;

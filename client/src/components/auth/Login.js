@@ -70,7 +70,7 @@ const Login = ({ handleLogin }) => {
   </MainBtn>
 </Form>
 </LoginForm>
-<Image width="600px"src={Logo} style={{float: 'right'}}/>
+<Image width="600px"src={Logo} style={{float: 'right', marginRight: '65px'}}/>
     </>
   )
 }
