@@ -1,16 +1,16 @@
 import { useState, useEffect} from 'react';
 import { ToxicConsumer } from '../../providers/ToxicProvider';
 import ToxicForm from './ToxicForm';
-import { Image, Container, Row, Col } from 'react-bootstrap';
+import { Image, Button } from 'react-bootstrap';
 import Moment from 'react-moment';
 import moment from 'moment';
-import { MainContainer,SideContainerToxic } from '../styles/shared';
+import { UploadImage,SideContainerToxic, RightNav1, MainContainer, SubButton } from '../styles/shared';
 
 
 
 const ToxicShow = ({ id, desc, deleteToxic, image, deletes_in, created_at, location}) => {
   const [editing, setEdit] = useState(false)
-  
+  const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
   useEffect( () => {
     if (id) {
       let duration = moment.duration({'minutes': deletes_in});
@@ -46,28 +46,32 @@ const ToxicShow = ({ id, desc, deleteToxic, image, deletes_in, created_at, locat
    
         : */}
         <>
+        <MainContainer>
         <SideContainerToxic>
-              <Image src={image} width='200px' />
-              <h5>
+          <Image src={defaultImage} width='85px' style={{float: 'left'}}  />
+              <h5>Name</h5>
+              <h6>
                 Time posted: &nbsp; 
               <Moment format="LTS" >
                 {created_at}
               </Moment>
-              </h5>
-            <h3>{desc}</h3>
-            <h4>{location}</h4>
+              </h6>
+              <UploadImage src={image}/> 
+            <h3 style={{textAlign: 'center'}}>{desc}</h3>
+            <h6>Location: {location}</h6>
               {/* <button
                 onClick={() => setEdit(true)}
               >
                 Edit
               </button> */}
-              <button
+              <SubButton
                 onClick={() => deleteToxic(id)}
               >
                 Delete
-              </button>
+              </SubButton>
  
           </SideContainerToxic>
+          </MainContainer>
         </>
       
       {/* } */}

@@ -18,6 +18,7 @@ import moment from 'moment';
 import ToxicShow from './../toxics/ToxicShow'
 import MessageShow from './../messages/MessageShow'
 import NoteShow from './../notes/NoteShow'
+import { ProfileContainer } from '../styles/shared';
 // Register the plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 
@@ -75,13 +76,11 @@ const Profile = ({ user, updateUser }) => {
 
   const profileView = () => (
     <>
-      <Col md="4">
-        <Image src={user.image ? user.image : defaultImage} width='200px' />
-      </Col>
-      <Col md="8">
-        <h1>Email: {user.email}</h1>
-        <h1>Full Name: {user.fname} {user.lname}</h1>
-        <h1>Age: {user.age}</h1>
+      <Col style={{textAlign: 'center'}}>
+        <Image style={{borderRadius: '1200px'}} src={user.image ? user.image : defaultImage} width='200px' />
+        <h5>{user.fname} {user.lname}</h5>
+        <h5>Email: {user.email}</h5>
+        <h5>Age: {user.age}</h5>
       </Col>
     </>
   )
@@ -94,21 +93,10 @@ const Profile = ({ user, updateUser }) => {
   }
 
   const editView = () => (
+    <ProfileContainer>
     <Form onSubmit={handleSubmit}>
-      <Col md="4">
-        <FilePond 
-            files={file}
-            onupdatefiles={handleFileUpdate}
-            onremovefile={handleFileRemoved}
-            allowMultiple={false}
-            name='image'
-            labelIdle='Drag and Drop your files or <span className="filePond--label-action">
-              Browse
-              </span>  
-            '
-        />
-      </Col>
-      <Col md="8">
+      <Col >
+      
         <Form.Group>
           <Form.Label>First Name</Form.Label>
           <Form.Control 
@@ -151,24 +139,35 @@ const Profile = ({ user, updateUser }) => {
             onChange={(e) => setFormValue({ ...formVals, age: e.target.value })}
             required
           />
+          <Form.Label>Upload Image</Form.Label>
+        <FilePond 
+            files={file}
+            onupdatefiles={handleFileUpdate}
+            onremovefile={handleFileRemoved}
+            allowMultiple={false}
+            name='image'
+            labelIdle='Drag and Drop your files or <span className="filePond--label-action">
+              Browse
+              </span>  
+            '
+        />
         </Form.Group>
-        <Button type='submit'>Update</Button>
       </Col>
+        <Button style={{float: 'right'}} type='submit'>Update</Button>
     </Form>
+    </ProfileContainer>
   )
 
   
   return (
     <Container>
-      <h1>Profile</h1>
-      <Row>
+      <ProfileContainer>
         { editing ? editView() : profileView() }
-        <Col>
           <Button onClick={() =>  setEditing(!editing) }>
             { editing ? 'Cancel' : 'Edit' }
           </Button>
-        </Col>
-      </Row>
+        </ProfileContainer>
+        <Container>
       {/* {JSON.stringify(data)} */}
       { data.map( d => {
         if (d.type === 'toxic'){
@@ -190,8 +189,8 @@ const Profile = ({ user, updateUser }) => {
            />
          }
       })}
-      
-    </Container>
+      </Container>
+     </Container> 
   )
 }
 

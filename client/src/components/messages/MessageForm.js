@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react';
 import { MessageConsumer } from '../../providers/MessageProvider';
-import { Form, Row, Col, Button} from 'react-bootstrap'
-import { SideContainerMessage } from '../styles/shared';
+import { Form, Row, Col, Button, Image, FormLabel} from 'react-bootstrap'
+import { SideContainerMessage2, SubButton } from '../styles/shared';
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond'
 
@@ -21,7 +21,7 @@ registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
 const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEdit, image, location}) => {
   const [message, setMessage] = useState({ title: '', body: '', image: null, location })
   const [file,setFile] = useState()
-
+  const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
   useEffect( () => {
     if (id) {
       setMessage({ title, body, image, location })
@@ -54,12 +54,46 @@ const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEd
   }
   return (
     <>
-        <SideContainerMessage>
+        <SideContainerMessage2>
       {/* <h1>{ id ? 'Update' : 'Create' } Message</h1> */}
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} >
+      <Image src={defaultImage} width='85px' style={{float: 'left'}} />
         <Row>
         <Col>
-        <FilePond 
+            {/* <Form.Group className="mb-3">
+              <Form.Control 
+              style={{background: 'rgba(254, 179, 0, .3)', border: 'none'}}
+                name='title'
+                value={message.title}
+                onChange={(e) => setMessage({...message, title: e.target.value })}
+                type="text" 
+                placeholder="Subject" 
+                required
+              />
+            </Form.Group> */}
+            <Form.Group className="mb-3">
+              <Form.Control 
+                style={{background: 'rgba(254, 179, 0, .3)', border: 'none'}}
+                name='body'
+                value={message.body}
+                onChange={(e) => setMessage({...message, body: e.target.value })}
+                type="text" 
+                placeholder="What do you want to say?" 
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Control 
+              style={{background: 'rgba(254, 179, 0, .3)', border: 'none'}}
+                name='location'
+                value={message.location}
+                onChange={(e) => setMessage({...message, location: e.target.value })}
+                type="text" 
+                placeholder="Where are you posting from?" 
+                required
+              />
+            </Form.Group>
+            <FilePond 
             files={file}
             onupdatefiles={handleFileUpdate}
             onremovefile={handleFileRemoved}
@@ -70,45 +104,13 @@ const MessageForm = ({ addMessage, setAdd, id, title, body, updateMessage, setEd
               </span>  
             '
         />
-            <Form.Group className="mb-3">
-              <Form.Control 
-                name='title'
-                value={message.title}
-                onChange={(e) => setMessage({...message, title: e.target.value })}
-                type="text" 
-                placeholder="Subject" 
-                required
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Control 
-                name='body'
-                value={message.body}
-                onChange={(e) => setMessage({...message, body: e.target.value })}
-                type="text" 
-                placeholder="Start a message" 
-                required
-              />
-            </Form.Group>
-            <Col>
-            <Form.Group className="mb-3">
-              <Form.Control 
-                name='location'
-                value={message.location}
-                onChange={(e) => setMessage({...message, location: e.target.value })}
-                type="text" 
-                placeholder="Location" 
-                required
-              />
-            </Form.Group>
-          </Col>
           </Col>
         </Row>
-        <Button variant="primary" type="submit">
+        <SubButton variant="primary" type="submit" >
           Submit
-        </Button>
+        </SubButton>
       </Form>
-      </SideContainerMessage>
+      </SideContainerMessage2>
     </>
   )
 }

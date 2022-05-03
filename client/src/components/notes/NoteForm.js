@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react';
 import { NoteConsumer } from '../../providers/NoteProvider';
 import { Form, Row, Col, Button, Image} from 'react-bootstrap'
-import {MainContainer, SideContainerNote} from '../styles/shared';
+import {SubButton, SideContainerNote2} from '../styles/shared';
 // Import React FilePond
 import { FilePond, File, registerPlugin } from 'react-filepond'
 
@@ -55,23 +55,12 @@ const NoteForm = ({ addNote, setAdd, id, title, body, updateNote, setEdit, image
   }
   return (
     <>
-        <SideContainerNote>
-            <Image src={defaultImage} width='100px' />
+        <SideContainerNote2>
           {/* <h1>{ id ? 'Update' : 'Create' } Note</h1> */}
           <Form onSubmit={handleSubmit}>
+            <Image src={defaultImage} width='85px' style={{float: 'left'}} />
             <Row>
             <Col>
-            <FilePond 
-                files={file}
-                onupdatefiles={handleFileUpdate}
-                onremovefile={handleFileRemoved}
-                allowMultiple={false}
-                name='image'
-                labelIdle='Drag and Drop your files or <span className="filePond--label-action">
-                Browse
-                </span>  
-                '
-            />
                 {/* <Form.Group className="mb-3">
                   <Form.Control 
                   name='title'
@@ -85,6 +74,7 @@ const NoteForm = ({ addNote, setAdd, id, title, body, updateNote, setEdit, image
                 </Form.Group> */}
                 <Form.Group className="mb-3">
                   <Form.Control 
+                    style={{backgroundColor: 'rgba(255, 255, 255, 0.2)',border: 'none'}}
                     name='body'
                     value={note.body}
                     onChange={(e) => setNote({...note, body: e.target.value })}
@@ -93,13 +83,24 @@ const NoteForm = ({ addNote, setAdd, id, title, body, updateNote, setEdit, image
                     required
                   />
                 </Form.Group>
+                <FilePond 
+            files={file}
+            onupdatefiles={handleFileUpdate}
+            onremovefile={handleFileRemoved}
+            allowMultiple={false}
+            name='image'
+            labelIdle='Drag and Drop your files or <span className="filePond--label-action">
+              Browse
+              </span>  
+            '
+        />
               </Col>
             </Row>
-            <Button variant="primary" type="submit">
+            <SubButton variant="primary" type="submit">
               Submit
-            </Button>
+            </SubButton>
           </Form> 
-      </SideContainerNote>
+      </SideContainerNote2>
     </>
   )
 }
